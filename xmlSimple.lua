@@ -82,8 +82,8 @@ function newParser()
 				j = j + 1
 			elseif (x == "!") then
 				local cdataStart = string.sub(xmlText, k+2, k+8)
-				if (cdataStart == "\[CDATA\[") then
-					j, k = string.find(xmlText, "\]\]>", i)
+				if (cdataStart == "[CDATA[") then
+					j, k = string.find(xmlText, "]]>", i)
 					local cdataText = string.sub(xmlText, i+9, j-1)
 					top:setValue((top:value() or "")..cdataText)
 					j = j + 2
