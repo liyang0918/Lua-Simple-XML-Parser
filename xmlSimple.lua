@@ -1,5 +1,3 @@
-module(..., package.seeall)
-
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 --
@@ -190,5 +188,11 @@ function newNode(name)
 		table.insert(self.___props, { name = name, value = self[lName] })
 	end
 
-	return node
+	return setmetatable(node, {__tostring = function(self) return self.___value end})
 end
+
+local _M = {}
+_M.newParser = newParser
+_M.newNode = newNode
+
+return _M
